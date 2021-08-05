@@ -488,6 +488,7 @@ class _DropdownBelowState<T> extends State<DropdownBelow<T>>
   void initState() {
     super.initState();
     WidgetsBinding.instance!.addObserver(this);
+    _updateSelectedIndex();
   }
 
   @override
