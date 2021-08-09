@@ -595,7 +595,7 @@ class _DropdownBelowState<T> extends State<DropdownBelow<T>>
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  if (widget.isPrefixed) widget.hint,
+                  if (widget.isPrefixed) widget.hint!,
                   Expanded(
                     child: IndexedStack(
                       index: _selectedIndex ?? hintIndex,
