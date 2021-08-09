@@ -419,6 +419,7 @@ class DropdownBelow<T> extends StatefulWidget {
     this.isDense = false,
     this.icon,
     this.isPrefixed = false,
+    this.isPressable = true,
   })  : assert(value == null ||
             items
                     .where((DropdownMenuItem<T> item) => item.value == value)
@@ -478,6 +479,8 @@ class DropdownBelow<T> extends StatefulWidget {
 
   final bool isPrefixed;
 
+  final bool isPressable;
+
   @override
   _DropdownBelowState<T> createState() => new _DropdownBelowState<T>();
 }
@@ -533,6 +536,7 @@ class _DropdownBelowState<T> extends State<DropdownBelow<T>>
   }
 
   void _handleTap() {
+    if (!widget.isPressable) return;
     final RenderBox itemBox = context.findRenderObject() as RenderBox;
     final Rect itemRect = itemBox.localToGlobal(Offset.zero) & itemBox.size;
     final TextDirection textDirection = Directionality.of(context);
