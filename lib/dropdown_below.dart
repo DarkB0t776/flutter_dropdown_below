@@ -402,23 +402,24 @@ class _DropdownRoute<T> extends PopupRoute<_DropdownRouteResult<T>> {
 }
 
 class DropdownBelow<T> extends StatefulWidget {
-  DropdownBelow(
-      {Key? key,
-      required this.items,
-      this.value,
-      this.hint,
-      this.itemTextstyle,
-      this.itemWidth,
-      this.boxHeight,
-      this.boxWidth,
-      this.boxPadding,
-      this.boxTextstyle,
-      required this.onChanged,
-      this.boxDecoration,
-      this.elevation = 8,
-      this.isDense = false,
-      this.icon})
-      : assert(value == null ||
+  DropdownBelow({
+    Key? key,
+    required this.items,
+    this.value,
+    this.hint,
+    this.itemTextstyle,
+    this.itemWidth,
+    this.boxHeight,
+    this.boxWidth,
+    this.boxPadding,
+    this.boxTextstyle,
+    required this.onChanged,
+    this.boxDecoration,
+    this.elevation = 8,
+    this.isDense = false,
+    this.icon,
+    this.isPrefixed = false,
+  })  : assert(value == null ||
             items
                     .where((DropdownMenuItem<T> item) => item.value == value)
                     .length ==
@@ -474,6 +475,8 @@ class DropdownBelow<T> extends StatefulWidget {
   final Widget? icon;
 
   final bool isDense;
+
+  final bool isPrefixed;
 
   @override
   _DropdownBelowState<T> createState() => new _DropdownBelowState<T>();
@@ -592,6 +595,7 @@ class _DropdownBelowState<T> extends State<DropdownBelow<T>>
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
+                  if (widget.isPrefixed) widget.hint,
                   Expanded(
                     child: IndexedStack(
                       index: _selectedIndex ?? hintIndex,
