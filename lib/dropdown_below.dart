@@ -561,6 +561,13 @@ class _DropdownBelowState<T> extends State<DropdownBelow<T>>
     });
   }
 
+  bool isRenderPrefix() {
+    if (_selectedIndex != null && widget.isPrefixed) {
+      return true;
+    }
+    return false;
+  }
+
   @override
   Widget build(BuildContext context) {
     assert(debugCheckHasMaterial(context));
@@ -595,7 +602,8 @@ class _DropdownBelowState<T> extends State<DropdownBelow<T>>
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  if (widget.isPrefixed) widget.hint!,
+                  if (isRenderPrefix()) widget.hint!,
+                  if (isRenderPrefix()) SizedBox(width: 10),
                   Expanded(
                     child: IndexedStack(
                       index: _selectedIndex ?? hintIndex,
