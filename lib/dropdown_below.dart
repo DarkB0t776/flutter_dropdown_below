@@ -566,7 +566,7 @@ class _DropdownBelowState<T> extends State<DropdownBelow<T>>
   }
 
   bool isRenderPrefix() {
-    if (_selectedIndex != null && widget.isPrefixed) {
+    if (_selectedIndex != null && widget.isPrefixed && widget.hint != null) {
       return true;
     }
     return false;
