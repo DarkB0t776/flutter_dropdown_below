@@ -537,6 +537,7 @@ class _DropdownBelowState<T> extends State<DropdownBelow<T>>
 
   void _handleTap() {
     if (!widget.isPressable) return;
+    FocusManager.instance.primaryFocus?.unfocus();
     final RenderBox itemBox = context.findRenderObject() as RenderBox;
     final Rect itemRect = itemBox.localToGlobal(Offset.zero) & itemBox.size;
     final TextDirection textDirection = Directionality.of(context);
